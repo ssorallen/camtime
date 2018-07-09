@@ -29,12 +29,14 @@ class App extends React.Component<Props, State> {
 
   _requestCameraAccess = () => {
     // $FlowFixMe
-    navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(stream => {
-      this.setState({ showCameraFeed: true }, () => {
-        if (this._videoRef == null) return;
-        this._videoRef.srcObject = stream;
+    navigator.mediaDevices
+      .getUserMedia({ audio: false, video: { facingMode: 'environment' } })
+      .then(stream => {
+        this.setState({ showCameraFeed: true }, () => {
+          if (this._videoRef == null) return;
+          this._videoRef.srcObject = stream;
+        });
       });
-    });
   };
 
   _stopCamera = () => {
