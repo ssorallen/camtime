@@ -80,7 +80,7 @@ class App extends React.Component<Props, State> {
                 <video
                   autoPlay
                   className="mb-1"
-                  playsinline
+                  playsInline
                   ref={ref => {
                     this._videoRef = ref;
                   }}
