@@ -29,10 +29,11 @@ class App extends React.Component<Props, State> {
 
   _requestCameraAccess = () => {
     // $FlowFixMe
-    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(stream => {
       this.setState({ showCameraFeed: true }, () => {
         if (this._videoRef == null) return;
         this._videoRef.srcObject = stream;
+        this._videoRef.play();
       });
     });
   };
@@ -78,7 +79,6 @@ class App extends React.Component<Props, State> {
             {this.state.showCameraFeed ? (
               <React.Fragment>
                 <video
-                  autoPlay
                   className="mb-1"
                   ref={ref => {
                     this._videoRef = ref;
