@@ -33,7 +33,6 @@ class App extends React.Component<Props, State> {
       this.setState({ showCameraFeed: true }, () => {
         if (this._videoRef == null) return;
         this._videoRef.srcObject = stream;
-        this._videoRef.play();
       });
     });
   };
@@ -79,7 +78,9 @@ class App extends React.Component<Props, State> {
             {this.state.showCameraFeed ? (
               <React.Fragment>
                 <video
+                  autoPlay
                   className="mb-1"
+                  playsinline
                   ref={ref => {
                     this._videoRef = ref;
                   }}
