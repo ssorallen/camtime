@@ -70,12 +70,12 @@ class Capture extends React.Component<Props, State> {
         {this.state.showCameraFeed ? (
           <video
             autoPlay
-            className="bg-dark flex-fill"
+            className="bg-dark"
             playsInline //
             ref={ref => {
               this._videoRef = ref;
             }}
-            style={{ height: '300px', width: '100%' }}
+            style={{ height: '100%', width: '100%' }}
           />
         ) : (
           <div
@@ -84,26 +84,30 @@ class Capture extends React.Component<Props, State> {
             <Button onClick={this._requestCameraAccess}>Access Camera</Button>
           </div>
         )}
-        {this.props.lastPhoto == null ? null : (
-          <Link to="/review">
-            <img
-              alt=""
-              className="rounded"
-              src={this.props.lastPhoto.dataURL}
-              style={{ position: 'absolute', left: '20px', bottom: '55px' }}
-              width="130"
-            />
-          </Link>
-        )}
         <div
-          className="bg-dark text-center py-2"
-          style={this.state.showCameraFeed ? { marginTop: '-7px' } : {}}>
-          <Button color="primary" disabled={!this.state.showCameraFeed} onClick={this._takePicture}>
-            Capture
-          </Button>{' '}
-          <Button disabled={!this.state.showCameraFeed} onClick={this._stopCamera}>
-            Stop
-          </Button>
+          className="align-items-center bg-dark d-flex justify-content-around py-2"
+          style={{ bottom: '20px', position: 'absolute', width: '100%' }}>
+          <Link to="/review">
+            {this.props.lastPhoto == null ? (
+              <div style={{ height: '75px', width: '100px' }} />
+            ) : (
+              <img alt="" className="rounded" src={this.props.lastPhoto.dataURL} width="100" />
+            )}
+          </Link>
+          <div className="text-center" style={{ width: '100px' }}>
+            <Button
+              className="btn-capture"
+              color="primary"
+              disabled={!this.state.showCameraFeed}
+              onClick={this._takePicture}>
+              Capture
+            </Button>
+          </div>
+          <div className="text-center" style={{ width: '100px' }}>
+            <Button disabled={!this.state.showCameraFeed} onClick={this._stopCamera}>
+              Stop
+            </Button>
+          </div>
         </div>
       </div>
     );
