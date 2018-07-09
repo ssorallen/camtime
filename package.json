@@ -16,10 +16,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "flow-bin": "^0.76.0"
+    "flow-bin": "^0.76.0",
+    "gh-pages": "^1.2.0"
   },
-  "homepage" : "http://ssorallen.github.io/camtime"
+  "homepage": "http://ssorallen.github.io/camtime"
 }
