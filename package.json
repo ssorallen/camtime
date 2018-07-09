@@ -1,5 +1,5 @@
 {
-  "name": "farmos",
+  "name": "camtime",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,5 +20,6 @@
   },
   "devDependencies": {
     "flow-bin": "^0.76.0"
-  }
+  },
+  "homepage" : "http://ssorallen.github.io/camtime"
 }
