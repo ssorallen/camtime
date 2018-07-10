@@ -85,13 +85,21 @@ class Capture extends React.Component<Props, State> {
           </div>
         )}
         <div
-          className="align-items-center bg-dark d-flex justify-content-around py-2"
+          className="align-items-center d-flex justify-content-around py-2"
           style={{ bottom: '20px', position: 'absolute', width: '100%' }}>
           <Link to="/review">
             {this.props.lastPhoto == null ? (
-              <div style={{ height: '75px', width: '100px' }} />
+              <div style={{ height: '100px', width: '100px' }} />
             ) : (
-              <img alt="" className="rounded" src={this.props.lastPhoto.dataURL} width="100" />
+              <div
+                className="rounded"
+                style={{
+                  backgroundImage: `url(${this.props.lastPhoto.dataURL})`,
+                  backgroundSize: 'cover',
+                  height: '100px',
+                  width: '100px',
+                }}
+              />
             )}
           </Link>
           <div className="text-center" style={{ width: '100px' }}>

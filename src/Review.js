@@ -1,5 +1,6 @@
 /* @flow */
 
+import './Review.css';
 import type { Photo } from './reducer';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -11,9 +12,13 @@ type Props = {
 class Review extends React.Component<Props> {
   render() {
     return (
-      <div>
+      <div className="clear-float">
         {this.props.photos.map(photo => (
-          <img alt="" className="m-1 rounded" key={photo.id} src={photo.dataURL} width="150" />
+          <div
+            className="float-left m-1 rounded review-img"
+            key={photo.id}
+            style={{ backgroundImage: `url(${photo.dataURL})` }}
+          />
         ))}
       </div>
     );
