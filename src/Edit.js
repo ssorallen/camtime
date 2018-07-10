@@ -42,16 +42,19 @@ class Edit extends React.Component<Props, State> {
           className="edit-img flex-fill mb-1"
           style={{ backgroundImage: `url(${this.props.photo.dataURL})` }}
         />
-        <Form className="p-1" onSubmit={this._setPhotoNote}>
+        <Form className="p-3" onSubmit={this._setPhotoNote}>
           <FormGroup row>
             <Col>
               <Input onChange={this._setNextNote} type="textarea" value={this.state.nextNote} />
             </Col>
           </FormGroup>
-          <FormGroup row>
+          <FormGroup className="text-right" row>
             <Col>
-              <Button disabled={!this._isDirty()} type="submit">
-                Save Note
+              <Button
+                color={this._isDirty() ? 'primary' : 'secondary'}
+                disabled={!this._isDirty()}
+                type="submit">
+                {this._isDirty() ? 'Save note' : '✓ Saved'}
               </Button>
             </Col>
           </FormGroup>
