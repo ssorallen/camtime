@@ -8,3 +8,11 @@ export function addPhoto(photo: Photo) {
     type: 'ADD_PHOTO',
   };
 }
+
+export function setPhotoNote(photo: Photo, note: string) {
+  return {
+    note,
+    photo,
+    type: 'SET_PHOTO_NOTE',
+  };
+}

@@ -4,6 +4,7 @@ import './App.css';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'reactstrap';
 import Capture from './Capture';
+import Edit from './Edit';
 import React from 'react';
 import Review from './Review';
 
@@ -27,6 +28,7 @@ export default class App extends React.Component<{}> {
             </Nav>
           </Navbar>
           <Route component={Capture} exact path="/" />
+          <Route component={Edit} path="/edit/:id" />
           <Route component={Review} path="/review" />
         </React.Fragment>
       </Router>

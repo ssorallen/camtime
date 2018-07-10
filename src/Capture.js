@@ -59,7 +59,7 @@ class Capture extends React.Component<Props, State> {
     canvas.width = videoRef.videoWidth;
     const context = canvas.getContext('2d');
     context.drawImage(videoRef, 0, 0, videoRef.videoWidth, videoRef.videoHeight);
-    this.props.dispatch(addPhoto({ dataURL: canvas.toDataURL(), id: '' }));
+    this.props.dispatch(addPhoto({ dataURL: canvas.toDataURL(), id: '', note: '' }));
   };
 
   render() {

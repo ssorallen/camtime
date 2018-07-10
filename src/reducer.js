@@ -5,6 +5,7 @@ import uuidv4 from 'uuid/v4';
 export type Photo = {
   dataURL: string,
   id: string,
+  note: string,
 };
 
 type AddPhotoAction = {
@@ -12,7 +13,13 @@ type AddPhotoAction = {
   type: 'ADD_PHOTO',
 };
 
-type Action = AddPhotoAction;
+type SetPhotoNoteAction = {
+  note: string,
+  photo: Photo,
+  type: 'SET_PHOTO_NOTE',
+};
+
+type Action = AddPhotoAction | SetPhotoNoteAction;
 type State = { photos: Array<Photo> };
 
 const initialState = {
@@ -32,6 +39,18 @@ export default function reducer(state: State = initialState, action: Action) {
           },
         ]),
       };
+    case 'SET_PHOTO_NOTE': {
+      // $FlowFixMe
+      const nextPhotos = state.photos.slice();
+      nextPhotos.splice(state.photos.indexOf(action.photo), 1, {
+        ...action.photo,
+        note: action.note,
+      });
+      return {
+        ...state,
+        photos: nextPhotos,
+      };
+    }
     default:
       return state;
   }
