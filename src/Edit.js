@@ -1,5 +1,7 @@
 /* @flow */
 
+import './Edit.css';
+import { Button, Col, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import type { Photo } from './reducer';
 import { connect } from 'react-redux';
@@ -35,14 +37,25 @@ class Edit extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <img alt="" className="mb-1" src={this.props.photo.dataURL} style={{ width: '100%' }} />
-        <form onSubmit={this._setPhotoNote}>
-          <textarea onChange={this._setNextNote} value={this.state.nextNote} />
-          <button disabled={!this._isDirty()} type="submit">
-            Save Note
-          </button>
-        </form>
+      <div className="d-flex edit-container flex-column">
+        <div
+          className="edit-img flex-fill mb-1"
+          style={{ backgroundImage: `url(${this.props.photo.dataURL})` }}
+        />
+        <Form className="p-1" onSubmit={this._setPhotoNote}>
+          <FormGroup row>
+            <Col>
+              <Input onChange={this._setNextNote} type="textarea" value={this.state.nextNote} />
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Col>
+              <Button disabled={!this._isDirty()} type="submit">
+                Save Note
+              </Button>
+            </Col>
+          </FormGroup>
+        </Form>
       </div>
     );
   }

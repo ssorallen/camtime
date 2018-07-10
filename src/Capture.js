@@ -95,6 +95,7 @@ class Capture extends React.Component<Props, State> {
                 className="rounded"
                 style={{
                   backgroundImage: `url(${this.props.lastPhoto.dataURL})`,
+                  backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
                   height: '100px',
                   width: '100px',

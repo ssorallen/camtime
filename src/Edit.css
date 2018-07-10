@@ -1,0 +1,11 @@
+.edit-container {
+  bottom: 0;
+  position: absolute;
+  top: 56px;
+  width: 100%;
+}
+
+.edit-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
