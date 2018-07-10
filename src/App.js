@@ -1,7 +1,7 @@
 /* @flow */
 
 import './App.css';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'reactstrap';
 import Capture from './Capture';
 import React from 'react';
@@ -10,7 +10,7 @@ import Review from './Review';
 export default class App extends React.Component<{}> {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <React.Fragment>
           <Navbar className="bg-primary" dark>
             <Nav className="text-center">
